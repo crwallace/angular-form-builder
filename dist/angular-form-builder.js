@@ -24,16 +24,16 @@
         /*
         1. Copy origin formObject (ng-repeat="object in formObjects") to scope.
         2. Setup optionsText with formObject.options.
-        3. Watch scope.label, .description, .placeholder, .required, .options then copy to origin formObject.
+        3. Watch scope.label, .copy, .placeholder, .required, .options then copy to origin formObject.
         4. Watch scope.optionsText then convert to scope.options.
         5. setup validationOptions
          */
         var component;
         copyObjectToScope(formObject, $scope);
         $scope.optionsText = formObject.options.join('\n');
-        $scope.$watch('[label, description, placeholder, required, options, validation]', function() {
+        $scope.$watch('[label, copy, placeholder, required, options, validation]', function() {
           formObject.label = $scope.label;
-          formObject.description = $scope.description;
+          formObject.copy = $scope.copy;
           formObject.placeholder = $scope.placeholder;
           formObject.required = $scope.required;
           formObject.options = $scope.options;
@@ -67,7 +67,7 @@
            */
           return this.model = {
             label: $scope.label,
-            description: $scope.description,
+            copy: $scope.copy,
             placeholder: $scope.placeholder,
             required: $scope.required,
             optionsText: $scope.optionsText,
@@ -83,7 +83,7 @@
             return;
           }
           $scope.label = this.model.label;
-          $scope.description = this.model.description;
+          $scope.copy = this.model.copy;
           $scope.placeholder = this.model.placeholder;
           $scope.required = this.model.required;
           $scope.optionsText = this.model.optionsText;
@@ -967,7 +967,7 @@
         User can custom the form with components.
     formObject:
         It is like an object (an instance of the component).
-        User can custom the label, description, required and validation of the input.
+        User can custom the label, copy, required and validation of the input.
     form:
         This is for end-user. There are form groups int the form.
         They can input the value to the form.
@@ -998,7 +998,7 @@
         name: name,
         group: (_ref = component.group) != null ? _ref : 'Default',
         label: (_ref1 = component.label) != null ? _ref1 : '',
-        description: (_ref2 = component.description) != null ? _ref2 : '',
+        copy: (_ref2 = component.copy) != null ? _ref2 : '',
         placeholder: (_ref3 = component.placeholder) != null ? _ref3 : '',
         editable: (_ref4 = component.editable) != null ? _ref4 : true,
         required: (_ref5 = component.required) != null ? _ref5 : false,
@@ -1034,7 +1034,7 @@
         editable: (_ref = formObject.editable) != null ? _ref : component.editable,
         index: (_ref1 = formObject.index) != null ? _ref1 : 0,
         label: (_ref2 = formObject.label) != null ? _ref2 : component.label,
-        description: (_ref3 = formObject.description) != null ? _ref3 : component.description,
+        copy: (_ref3 = formObject.copy) != null ? _ref3 : component.copy,
         placeholder: (_ref4 = formObject.placeholder) != null ? _ref4 : component.placeholder,
         options: (_ref5 = formObject.options) != null ? _ref5 : component.options,
         required: (_ref6 = formObject.required) != null ? _ref6 : component.required,
@@ -1092,7 +1092,7 @@
         @param component: The component object.
             group: {string} The component group.
             label: {string} The label of the input.
-            description: {string} The description of the input.
+            copy: {string} The copy of the input.
             placeholder: {string} The placeholder of the input.
             editable: {bool} Is the form object editable?
             required: {bool} Is the form object required?
@@ -1151,7 +1151,7 @@
             component: {string} The component name
             editable: {bool} Is the form object editable? (default is yes)
             label: {string} The form object label.
-            description: {string} The form object description.
+            copy: {string} The form object copy.
             placeholder: {string} The form object placeholder.
             options: {array} The form object options.
             required: {bool} Is the form object required? (default is no)

@@ -5,7 +5,7 @@
         User can custom the form with components.
     formObject:
         It is like an object (an instance of the component).
-        User can custom the label, description, required and validation of the input.
+        User can custom the label, copy, required and validation of the input.
     form:
         This is for end-user. There are form groups int the form.
         They can input the value to the form.
@@ -42,7 +42,7 @@ angular.module 'builder.provider', []
             name: name
             group: component.group ? 'Default'
             label: component.label ? ''
-            description: component.description ? ''
+            copy: component.copy ? ''
             placeholder: component.placeholder ? ''
             editable: component.editable ? yes
             required: component.required ? no
@@ -69,7 +69,7 @@ angular.module 'builder.provider', []
             editable: formObject.editable ? component.editable
             index: formObject.index ? 0
             label: formObject.label ? component.label
-            description: formObject.description ? component.description
+            copy: formObject.copy ? component.copy
             placeholder: formObject.placeholder ? component.placeholder
             options: formObject.options ? component.options
             required: formObject.required ? component.required
@@ -113,7 +113,7 @@ angular.module 'builder.provider', []
         @param component: The component object.
             group: {string} The component group.
             label: {string} The label of the input.
-            description: {string} The description of the input.
+            copy: {string} The copy of the input.
             placeholder: {string} The placeholder of the input.
             editable: {bool} Is the form object editable?
             required: {bool} Is the form object required?
@@ -154,7 +154,7 @@ angular.module 'builder.provider', []
             component: {string} The component name
             editable: {bool} Is the form object editable? (default is yes)
             label: {string} The form object label.
-            description: {string} The form object description.
+            copy: {string} The form object copy.
             placeholder: {string} The form object placeholder.
             options: {array} The form object options.
             required: {bool} Is the form object required? (default is no)

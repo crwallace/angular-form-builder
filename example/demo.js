@@ -36,31 +36,21 @@
     }
   ]).controller('DemoController', [
     '$scope', '$builder', '$validator', function($scope, $builder, $validator) {
-      var checkbox, textbox;
+      var textLine, textbox;
+      textLine = $builder.addFormObject('default', {
+        component: 'textInput'
+      });
       textbox = $builder.addFormObject('default', {
-        id: 'textbox',
-        component: 'textInput',
-        label: 'Name',
-        description: 'Your name',
-        placeholder: 'Your name',
-        required: true,
-        editable: false
-      });
-      checkbox = $builder.addFormObject('default', {
-        id: 'checkbox',
-        component: 'checkbox',
-        label: 'Pets',
-        description: 'Do you have any pets?',
-        options: ['Dog', 'Cat']
-      });
-      $builder.addFormObject('default', {
-        component: 'sampleInput'
+        id: 'imgblock',
+        component: 'imgSrc',
+        label: '',
+        img_url: 'http://placehold.it/500x150',
+        alt_text: 'description'
       });
       $scope.form = $builder.forms['default'];
       $scope.input = [];
       $scope.defaultValue = {};
       $scope.defaultValue[textbox.id] = 'default value';
-      $scope.defaultValue[checkbox.id] = [true, true];
       return $scope.submit = function() {
         return $validator.validate($scope, 'default').success(function() {
           return console.log('success');
